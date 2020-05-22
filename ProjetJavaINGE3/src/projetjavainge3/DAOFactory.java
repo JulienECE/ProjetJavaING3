@@ -26,7 +26,7 @@ public class DAOFactory {
   
 protected static final Connection conn = null;   
 
-    
+/*    
  public DAOFactory(){
         
         Connection conn = null;
@@ -85,5 +85,5 @@ try {
   
   public static DAO getUtilisateurDAO(){
     return new UtilisateurDAO(conn);
-  } 
+  } */
 }
