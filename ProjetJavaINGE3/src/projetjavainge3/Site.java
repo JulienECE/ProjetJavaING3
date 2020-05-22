@@ -10,5 +10,14 @@ package projetjavainge3;
  * @author Asus
  */
 public class Site {
+    private int id;
+    private String nom;
     
+    public Site(int id,String nom){
+        this.id=id;
+        this.nom=nom;
+    }
+    public Site(){
+        
+    }
 }

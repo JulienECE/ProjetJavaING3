@@ -10,5 +10,16 @@ package projetjavainge3;
  * @author Asus
  */
 public class Groupe {
+    private int id;
+    private String nom;
+    private int id_promotion;
     
+    public Groupe(int id,String nom,int id_promotion){
+        this.id=id;
+        this.nom=nom;
+        this.id_promotion=id_promotion;     
+    }
+    public Groupe(){
+        
+    }
 }

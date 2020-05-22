@@ -10,5 +10,14 @@ package projetjavainge3;
  * @author Asus
  */
 public class Enseignant {
+    private int id_utilisateur;
+    private int id_cours;
     
+    public Enseignant(int id_utilisateur,int id_cours){
+        this.id_utilisateur=id_utilisateur;
+        this.id_cours=id_cours;
+    }
+    public Enseignant(){
+        
+    }
 }
