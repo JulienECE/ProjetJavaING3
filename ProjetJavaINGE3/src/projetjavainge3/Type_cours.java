@@ -10,5 +10,14 @@ package projetjavainge3;
  * @author Asus
  */
 public class Type_cours {
+    private int id;
+    private String nom;
     
+    public Type_cours(int id,String nom){
+        this.id=id;
+        this.nom=nom;
+    }
+    public Type_cours(){
+        
+    }
 }
