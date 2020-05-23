@@ -28,7 +28,7 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
     
     try {
     // db parameters - ptest is the name of the database
-    String url       = "jdbc:mysql://localhost:3306/edt";
+    String url       = "jdbc:mysql://localhost/edt";
     String user      = "root";
     String password  = "root";
    

@@ -26,19 +26,16 @@ public class DAOFactory {
   
 protected static final Connection conn = null;   
 
-/*    
+    
  public DAOFactory(){
         
         Connection conn = null;
 try {
-    String url       = "jdbc:mysql://http://localhost/phpmyadmin/";
+    String url       = "jdbc:mysql://localhost/edt";
     String user      = "root";
-    String password  = "";
+    String password  = "root";
   
     conn = DriverManager.getConnection(url, user, password);
-    Statement stmt=conn.createStatement(); 
-    
-    ResultSet rs=stmt.executeQuery("select * from users"); 
     
 } catch(SQLException e) {
    System.out.println(e.getMessage());
@@ -85,5 +82,5 @@ try {
   
   public static DAO getUtilisateurDAO(){
     return new UtilisateurDAO(conn);
-  } */
+  } 
 }

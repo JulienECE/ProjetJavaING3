@@ -36,5 +36,6 @@ public class GroupeDAO extends DAO<Groupe>{
     public Groupe find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
 }
