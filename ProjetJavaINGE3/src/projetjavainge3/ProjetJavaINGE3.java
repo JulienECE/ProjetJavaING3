@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+//iudv_eunv_uienvizuvn
 
 /**
  *
@@ -22,13 +23,13 @@ public class ProjetJavaINGE3 {
      * @param args the command line arguments
      */
 public static void main(String[] args) throws ClassNotFoundException, SQLException {
-    
+    new BigWindow(0,"a",0);
     Connection conn = null;
     boolean check=false;
     
     try {
     // db parameters - ptest is the name of the database
-    String url       = "jdbc:mysql://localhost/edt";
+    String url       = "jdbc:mysql://localhost:3309/edt";
     String user      = "root";
     String password  = "root";
    
@@ -42,6 +43,7 @@ ResultSet rs=stmt.executeQuery("select * from users");
     
    
 } catch(SQLException e) {
+    System.out.println("huyvuygy");
    System.out.println(e.getMessage());
 } finally {
     try{
