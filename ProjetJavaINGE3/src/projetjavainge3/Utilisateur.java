@@ -15,9 +15,9 @@ public class Utilisateur {
     private String passwd;
     private String nom;
     private String prenom;
-    private String droit;
+    private int droit;
     
-    public Utilisateur(int id,String mail,String passwd,String nom,String prenom,String droit){
+    public Utilisateur(int id,String mail,String passwd,String nom,String prenom,int droit){
         this.id=id;
         this.mail=mail;
         this.nom=nom;
@@ -27,5 +27,14 @@ public class Utilisateur {
     }
     public Utilisateur(){
         
+    }
+    public void affiche(){
+        System.out.println("id: "+id+" mail: "+mail+" password"+passwd+" nom: "+nom+"prenom: "+prenom+" droit: "+droit+"");
+    }
+    public int getid(){
+        return id;
+    }
+    public int getdroit(){
+        return droit;
     }
 }

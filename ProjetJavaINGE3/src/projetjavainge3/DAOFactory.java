@@ -24,63 +24,108 @@ import javax.swing.JPanel;
  */
 public class DAOFactory {
   
-protected static final Connection conn = null;   
+protected Connection conn = null;  
+protected Statement stmt;
 
     
  public DAOFactory(){
-        
-        Connection conn = null;
+        System.out.print("L'utilisateur n'est pas trouvé!");
 try {
     String url       = "jdbc:mysql://localhost/edt";
     String user      = "root";
-    String password  = "root";
+    String password  = "";
   
     conn = DriverManager.getConnection(url, user, password);
-    
 } catch(SQLException e) {
+    System.out.print("CEST LE PB");
    System.out.println(e.getMessage());
-} finally {
-    try{
-           if(conn != null)
-             conn.close();
-    }catch(SQLException ex){
-           System.out.println(ex.getMessage());
-    }
-}
-   
+}  
 }
     
     
       
-  public static DAO getCoursDAO(){
+  public  DAO getCoursDAO(){
     return new CoursDAO(conn);
   }
   
-  public static DAO getGroupeDAO(){
+  public  DAO getGroupeDAO(){
     return new GroupeDAO(conn);
   }
   
-  public static DAO getPromotionDAO(){
+  public  DAO getPromotionDAO(){
     return new PromotionDAO(conn);
   }
   
-  public static DAO getSalleDAO(){
+  public  DAO getSalleDAO(){
     return new SalleDAO(conn);
   }   
   
-  public static DAO getSeanceDAO(){
+  public  DAO getSeanceDAO(){
     return new SeanceDAO(conn);
   } 
   
-  public static DAO getSiteDAO(){
+  public  DAO getSiteDAO(){
     return new SiteDAO(conn);
   } 
   
-  public static DAO getType_coursDAO(){
+  public  DAO getType_coursDAO(){
     return new Type_coursDAO(conn);
   } 
   
-  public static DAO getUtilisateurDAO(){
+  public  DAO getUtilisateurDAO(){
     return new UtilisateurDAO(conn);
   } 
+  
+  public DAO getuser(String name,String prenom,String mdp){
+      
+      try{
+          System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      ResultSet result = this.conn.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from utilisateur where NOM = '"+name+"' AND PRENOM = '"+prenom+"' AND PASSWD = '"+mdp+"' ");
+      System.out.print("bbbbbbbbbbbbbbbbb");
+      System.out.print("select * from utilisateur where NOM = '"+name+"' AND PRENOM = '"+prenom+"' AND PASSWD = '"+mdp+"' ");
+      if(!result.next())
+      {
+          System.out.println("cest noooooooooon");
+      }
+
+      if(result.first())
+      {
+          System.out.println(result.getInt(6)); 
+          if(result.getInt(6)==0){
+              return new UtilisateurDAO(conn,result);
+          }
+          if(result.getInt(6)==1){
+              return new UtilisateurDAO(conn,result);
+          }
+      }
+      
+      }catch(SQLException e) {
+          return new UtilisateurDAO(conn);
+    }
+    return new UtilisateurDAO(conn);
+      
+  }
+  
+  
+  public  boolean checkadmin(String mdp) throws SQLException
+  {
+      Statement stmt=conn.createStatement();
+      ResultSet rs=stmt.executeQuery("select * from utilisateur where PASSWD = "+mdp+" "); 
+      while(rs.next())
+      {
+          if(rs.getInt(6)==0)
+          {
+            return false;
+          }
+          
+          if(rs.getInt(6)==1)
+          {
+            return true;
+          }
+          
+      }
+    return false;
+  }
 }

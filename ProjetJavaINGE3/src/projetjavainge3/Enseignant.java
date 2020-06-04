@@ -7,7 +7,7 @@ package projetjavainge3;
 
 /**
  *
- * @author Asus
+ * @author Asusefbneijv
  */
 public class Enseignant {
     private int id_utilisateur;

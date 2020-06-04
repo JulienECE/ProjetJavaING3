@@ -29,16 +29,16 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
     
     try {
     // db parameters - ptest is the name of the database
-    String url       = "jdbc:mysql://localhost:3309/edt";
+    String url       = "jdbc:mysql://localhost/edt";
     String user      = "root";
-    String password  = "root";
+    String password  = "";
    
     // create a connection to the database
     conn = DriverManager.getConnection(url, user, password);
     // more processing here
     // ...   
     Statement stmt=conn.createStatement(); 
-ResultSet rs=stmt.executeQuery("select * from users"); 
+ResultSet rs=stmt.executeQuery("select * from salle"); 
     
     
    
