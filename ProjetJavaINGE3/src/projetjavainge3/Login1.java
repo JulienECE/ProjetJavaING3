@@ -53,7 +53,7 @@ public class Login1 implements ActionListener{
           System.out.print("L'utilisateur n'est pas trouvé!");
          // Set the panel's background to red.
         JPanel panelLogin;
-         loginWindow = new JFrame();
+        loginWindow = new JFrame();
         loginWindow.setTitle("Welcome Back");
         loginWindow.setLocation(800,400);
         loginWindow.setSize(150,320);

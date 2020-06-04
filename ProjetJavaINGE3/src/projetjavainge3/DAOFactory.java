@@ -128,4 +128,8 @@ try {
       }
     return false;
   }
+  
+  //public Utilisateur getcours(){
+  //  return new SalleDAO(conn);
+  //}
 }

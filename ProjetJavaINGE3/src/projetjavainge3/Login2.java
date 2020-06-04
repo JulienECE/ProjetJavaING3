@@ -71,10 +71,8 @@ public class Login2 implements ActionListener
          user.affiche();
         if(user.getid()!=0){
             System.out.println("OUI C BN GG");
-         if(check==true){
              new Login1(tests,window,name,page,types);
             if(valide==false){
-
                new BigWindow(1,name,page);
                window.setVisible(false);
                mainWindow.setVisible(false);
@@ -85,7 +83,7 @@ public class Login2 implements ActionListener
                window.setVisible(false);
                mainWindow.setVisible(false);
             }
-         }
+         
         }
         else{
             System.out.println("NOPE");
