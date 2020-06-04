@@ -168,7 +168,7 @@ public class BigWindow {
       //addmovie.addActionListener(new Addmovie(mainWindow,username,page));
       
       loginButton.addActionListener(new Login1(true,mainWindow,username,page,false));
-      //registerButton.addActionListener(new Login1(false,mainWindow,username,page,true));
+      registerButton.addActionListener(new Login1(false,mainWindow,username,page,true));
        
       //if(nbp!=page+1){
       //next.addActionListener(new Page(type,1,page,mainWindow,username));

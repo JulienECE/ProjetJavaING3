@@ -22,4 +22,9 @@ public abstract class DAO<T> {
   public abstract boolean delete(T obj);
   public abstract boolean update(T obj);
   public abstract T find(int id); 
+
+    Utilisateur getuser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

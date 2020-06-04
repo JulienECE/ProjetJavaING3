@@ -23,6 +23,3 @@ public class Etudiant {
         
     }
 }
-bv_eyébvçueébvçuenvçuhev eiovj
-rgtggggggggg
-ggg

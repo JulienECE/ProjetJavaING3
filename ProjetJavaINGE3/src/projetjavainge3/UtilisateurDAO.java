@@ -6,15 +6,25 @@
 package projetjavainge3;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author Asus
  */
 public class UtilisateurDAO extends DAO<Utilisateur>{
-
+    
+    protected ResultSet result=null;
+    
     public UtilisateurDAO(Connection conn) {
         super(conn);
+    }
+    public UtilisateurDAO(Connection conn,ResultSet result) {
+        super(conn);
+        this.result=result;
+        this.getuser();
     }
 
     @Override
@@ -35,6 +45,28 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     @Override
     public Utilisateur find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Utilisateur getuser() {
+        Utilisateur user = new Utilisateur();      
+
+        try {
+            System.out.println("sex");
+            if(this.result!=null){
+                if(this.result.first()){
+                    System.out.println("sex");
+                  user = new Utilisateur(this.result.getInt(1),this.result.getString(2),this.result.getString(3),this.result.getString(4),this.result.getString(5),this.result.getInt(6));   
+                }
+            }
+          else{
+              System.out.println("uhvuybiubib");
+           user = new Utilisateur();
+          }
+        } catch (SQLException e) {
+            System.out.println("uhvuybiubib");
+           user = new Utilisateur();
+        }
+        return user;
     }
     
 }
