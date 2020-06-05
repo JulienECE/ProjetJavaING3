@@ -25,7 +25,9 @@ public class Etudiant {
     }
     public Etudiant(Utilisateur user){
         this.user=user;
+        System.out.println("AH");
         this.addcours();
+        System.out.println("AH");
     }
     
     public Etudiant(){
@@ -37,8 +39,12 @@ public class Etudiant {
     }
     
     public void addcours(){
+        System.out.println("b");
         DAOFactory f = new DAOFactory();
+        System.out.println("c");
         DAO<Etudiant> e =f.getEtudiantDAO();
+        System.out.println("d");
         this.tab=e.getcours(this);
+        System.out.println("AH");
     }        
 }

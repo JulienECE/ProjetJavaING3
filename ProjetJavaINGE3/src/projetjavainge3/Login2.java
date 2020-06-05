@@ -70,9 +70,11 @@ public class Login2 implements ActionListener
          util1DAO=inter1.getuser(name,prenom, mdp);
          user = util1DAO.getuser();
          user.affiche();
-         Etudiant etudiant = user.isEtudiant();
+         
          
         if(user.getid()!=0){
+            System.out.println("OUI C BN GG");
+            Etudiant etudiant = user.isEtudiant();
             System.out.println("OUI C BN GG");
              new Login1(tests,window,name,page,types);
             if(valide==false){

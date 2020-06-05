@@ -65,7 +65,7 @@ try {
   } 
   
   public  DAO getEtudiantDAO(){
-    return new SeanceDAO(conn);
+    return new EtudiantDAO(conn);
   } 
   
   public  DAO getSiteDAO(){

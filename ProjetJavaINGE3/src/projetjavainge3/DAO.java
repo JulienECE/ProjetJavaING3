@@ -6,6 +6,8 @@
 package projetjavainge3;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  * @author Asus
  */
 public abstract class DAO<T> {
+    ArrayList<Seance> tab =new ArrayList<Seance>();
    protected Connection connect = null;
    
   public DAO(Connection conn){
@@ -28,8 +31,12 @@ public abstract class DAO<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    ArrayList<Seance> getcours(Etudiant aThis) {
+    ArrayList<Seance> getcours(Etudiant user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+ 
 
 }
