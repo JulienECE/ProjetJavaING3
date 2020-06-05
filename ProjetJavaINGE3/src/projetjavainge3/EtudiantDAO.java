@@ -56,7 +56,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
     }
     
     public ArrayList<Seance> getcours(Etudiant user){
-      
+      System.out.println("dedans");
       try{
       ResultSet result = this.connect.createStatement(
       ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -65,8 +65,10 @@ public class EtudiantDAO extends DAO<Etudiant>{
       result = this.connect.createStatement(
       ResultSet.TYPE_SCROLL_INSENSITIVE,
       ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_groupes where ID_GROUPE = '"+id_groupe+"'");
+      System.out.println("dedans");
       while(result.next())
       {
+          System.out.println("dedans");
           ResultSet resultat = this.connect.createStatement(
           ResultSet.TYPE_SCROLL_INSENSITIVE,
           ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
