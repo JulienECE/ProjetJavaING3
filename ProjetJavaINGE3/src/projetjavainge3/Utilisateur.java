@@ -5,6 +5,8 @@
  */
 package projetjavainge3;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
@@ -36,5 +38,17 @@ public class Utilisateur {
     }
     public int getdroit(){
         return droit;
+    }
+    
+    public Etudiant isEtudiant(){
+        Etudiant e =new Etudiant(this);
+        
+        return e;
+    }
+    
+    public Enseignant isEnseignant(){
+        Enseignant e =new Enseignant();
+        
+        return e;
     }
 }

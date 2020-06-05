@@ -41,7 +41,8 @@ public class Login2 implements ActionListener
         private String name;
         private boolean tests;
         private boolean types;
-         public Login2(JTextField u, JTextField p,JTextField prenom, JFrame w,JFrame m,int pages,String names,boolean test,boolean type){
+        
+        public Login2(JTextField u, JTextField p,JTextField prenom, JFrame w,JFrame m,int pages,String names,boolean test,boolean type){
              name=names;
              page=pages;
              username1=u;
@@ -69,6 +70,8 @@ public class Login2 implements ActionListener
          util1DAO=inter1.getuser(name,prenom, mdp);
          user = util1DAO.getuser();
          user.affiche();
+         Etudiant etudiant = user.isEtudiant();
+         
         if(user.getid()!=0){
             System.out.println("OUI C BN GG");
              new Login1(tests,window,name,page,types);
@@ -83,8 +86,8 @@ public class Login2 implements ActionListener
                window.setVisible(false);
                mainWindow.setVisible(false);
             }
-         
         }
+        
         else{
             System.out.println("NOPE");
             window.setVisible(false);

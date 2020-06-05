@@ -64,6 +64,10 @@ try {
     return new SeanceDAO(conn);
   } 
   
+  public  DAO getEtudiantDAO(){
+    return new SeanceDAO(conn);
+  } 
+  
   public  DAO getSiteDAO(){
     return new SiteDAO(conn);
   } 
@@ -129,7 +133,10 @@ try {
     return false;
   }
   
-  //public Utilisateur getcours(){
-  //  return new SalleDAO(conn);
+  //public Enseignant getcours(Enseignant user){
+
+   // return new SalleDAO(conn);
   //}
+  
 }
+
