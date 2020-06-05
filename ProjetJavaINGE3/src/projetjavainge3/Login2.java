@@ -75,7 +75,9 @@ public class Login2 implements ActionListener
         if(user.getid()!=0){
             System.out.println("OUI C BN GG");
             Etudiant etudiant = user.isEtudiant();
-            System.out.println("OUI C BN GG");
+            etudiant.affichecours();
+            
+            System.out.println(etudiant.getid());
              new Login1(tests,window,name,page,types);
             if(valide==false){
                new BigWindow(1,name,page);
