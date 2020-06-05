@@ -23,11 +23,13 @@ public class Etudiant {
         this.id_groupe=id_groupe;
         this.numero=numero;     
     }
-    public Etudiant(Utilisateur user){
+    public Etudiant(Utilisateur user,int id){
         this.user=user;
+        this.id_utilisateur=id;
         System.out.println("AH");
         this.addcours();
         System.out.println("AH");
+        
     }
     
     public Etudiant(){
@@ -38,10 +40,17 @@ public class Etudiant {
         return this.id_utilisateur;
     }
     
-    public void addcours(){
-        System.out.println("b");
+    public void affichecours(){
+        System.out.println("tab:"+tab.size());
+        for(int i=0; i<tab.size();i++){
+            System.out.println(tab.get(i).getid());
+            System.out.println(tab.get(i).getsemaine());
+        }
+    }
+    
+    public void addcours(){     
         DAOFactory f = new DAOFactory();
-        System.out.println("c");
+        System.out.println("c:"+id_utilisateur);
         DAO<Etudiant> e =f.getEtudiantDAO();
         System.out.println("d");
         this.tab=e.getcours(this);

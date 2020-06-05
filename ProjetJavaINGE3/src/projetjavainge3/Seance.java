@@ -29,7 +29,15 @@ public class Seance {
     this.id_cours=id_cours;
     this.id_type=id_type;
     }
+    
     public Seance(){
         
+    }
+    public int getid(){
+        return this.id;
+    }
+    
+    public int getsemaine(){
+        return this.semaine;
     }
 }

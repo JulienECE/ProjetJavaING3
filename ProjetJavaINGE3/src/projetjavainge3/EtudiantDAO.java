@@ -56,19 +56,40 @@ public class EtudiantDAO extends DAO<Etudiant>{
     }
     
     public ArrayList<Seance> getcours(Etudiant user){
-      System.out.println("dedans");
+      System.out.println("taille"+user.getid());
       try{
       ResultSet result = this.connect.createStatement(
       ResultSet.TYPE_SCROLL_INSENSITIVE,
       ResultSet.CONCUR_READ_ONLY).executeQuery("select * from etudiant where ID_UTILISATEUR = '"+user.getid()+"'");
+      System.out.println("dedans1");
+      if(result.first())
+      {
+          System.out.println(result.getInt(3)); 
+      }
       int id_groupe = result.getInt(3);
+      System.out.println("dedans1");
+      System.out.println(id_groupe);
       result = this.connect.createStatement(
       ResultSet.TYPE_SCROLL_INSENSITIVE,
       ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_groupes where ID_GROUPE = '"+id_groupe+"'");
       System.out.println("dedans");
+      if(result.first())
+      {
+           System.out.println("a lint1");
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
+          if(resultat.first())
+      {
+          
+      }
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getInt(4),resultat.getInt(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          Seance seance = seanceDAO.create();
+          tab.add(seance);   
+      }
       while(result.next())
       {
-          System.out.println("dedans");
+          System.out.println("alint 2");
           ResultSet resultat = this.connect.createStatement(
           ResultSet.TYPE_SCROLL_INSENSITIVE,
           ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");

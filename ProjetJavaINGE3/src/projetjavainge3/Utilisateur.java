@@ -41,7 +41,8 @@ public class Utilisateur {
     }
     
     public Etudiant isEtudiant(){
-        Etudiant e =new Etudiant(this);
+        System.out.println("id:"+id);
+        Etudiant e =new Etudiant(this,id);
         
         return e;
     }
