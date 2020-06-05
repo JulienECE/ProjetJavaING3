@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ import java.sql.Statement;
 public class UtilisateurDAO extends DAO<Utilisateur>{
     
     protected ResultSet result=null;
+    ArrayList<Seance> tab =new ArrayList<Seance>();
     
     public UtilisateurDAO(Connection conn) {
         super(conn);
@@ -68,5 +70,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         }
         return user;
     }
+    
+    
     
 }

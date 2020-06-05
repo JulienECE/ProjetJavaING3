@@ -6,6 +6,7 @@
 package projetjavainge3;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +25,10 @@ public abstract class DAO<T> {
   public abstract T find(int id); 
 
     Utilisateur getuser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    ArrayList<Seance> getcours(Etudiant aThis) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
