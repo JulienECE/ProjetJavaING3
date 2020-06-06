@@ -16,7 +16,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -88,7 +91,7 @@ public class BigWindow {
   private int nbf;
   private int r;
   
-    public BigWindow(int types,String name,int num_page)
+    public BigWindow(int types,String name,int num_page,Etudiant etudiant)
     {
       type=types;
     page=num_page;
@@ -127,6 +130,9 @@ public class BigWindow {
      panel7.setBackground(Color.black);
      mainWindow.add(panel7);
 
+     
+     String debut = "0830";
+     
       // INITIALISE LOG BUTTON
       
       loginButton = new JButton("Login");
@@ -389,6 +395,68 @@ public class BigWindow {
       panel3.add(label3,BorderLayout.EAST);
       }*/
       
+
+     if(type==0){
+         mainWindow.add(panellog);  
+     }
+      if(type==1){
+          System.out.println("entrer");
+          mainWindow.add(basketpanel);
+        mainWindow.add(welcomepanel);  
+        int j=0;
+        for(int i=0;i<etudiant.getab().size();i++)
+        {
+            String date_etudiant = String.valueOf(etudiant.getab().get(i).getdate());
+            String jour = etudiant.jours(date_etudiant);
+            System.out.println("le jour est: " + jour);
+            switch(jour){
+                case "lundi":
+                    j=0;
+                    
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                    
+                break;
+            }
+            switch(jour){
+                case "mardi":
+                    j=1;
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                break;
+            }
+            switch(jour){
+                case "mercredi":
+                    j=2;
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                break;
+            }
+            switch(jour){
+                case "jeudi":
+                    j=3;
+                    
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                    
+                break;
+            }
+            switch(jour){
+                case "vendredi":
+                    j=4;
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                break;
+            }
+            switch(jour){
+                case "samedi":
+                    addpanel( etudiant,  i ,  debut ,  gridh, gridw, j,screenWidth,screenHigh);
+                    j=5;
+                break;
+            }       
+        }
+     }
+      if(type==2){
+         mainWindow.add(basketpanel);
+         mainWindow.add(welcomepanel);  
+     }
+     
+     
       //panelbot.add(labelf);
       paneldes1.add(des1);
       paneldes2.add(des2);
@@ -398,6 +466,7 @@ public class BigWindow {
 
      //AFFICHAGE PANELS
 
+     
      mainWindow.add(panel);
      mainWindow.add(panelgauche);  
      mainWindow.add(paneldroite); 
@@ -417,19 +486,7 @@ public class BigWindow {
      //mainWindow.add(paneldes1);
      //mainWindow.add(paneldes2);
      //mainWindow.add(paneldes3);
-     if(type==0){
-         mainWindow.add(panellog);  
-     }
-      if(type==1){
-          mainWindow.add(basketpanel);
-        mainWindow.add(welcomepanel);  
-     }
-      if(type==2){
-         mainWindow.add(basketpanel);
-         mainWindow.add(welcomepanel);  
-     }
-     
-     
+      
     // mainWindow.add(panelreg); 
      mainWindow.add(panelentete);  
      
@@ -443,5 +500,64 @@ public class BigWindow {
     // Display the window.
       
     mainWindow.setVisible(true);
+    }
+    
+    public void addpanel(Etudiant etudiant, int i , String debut , int gridh,int gridw,int j,int screenWidth, int screenHigh){
+        
+        String heur_deb =etudiant.getab().get(i).getheure_debut();
+                    String heur_fin =etudiant.getab().get(i).getheure_fin();
+                    int temps;
+                    int minute_deb;
+                    int minute_fin;
+                    int total;
+                    int heur=0;
+                    String h1;
+                    h1 = heur_deb.substring(2,4);
+                    minute_deb =60- Integer.parseInt(String.valueOf(heur_deb).substring(2,4));
+                    minute_fin =Integer.parseInt(String.valueOf(heur_fin).substring(2,4));
+                    total=minute_deb+minute_fin;
+                    
+                    SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
+                    float nbHeures = 0;
+                    float nbHeuresdebut = 0;
+                    try {
+                    Date debinit = sdf.parse(debut);
+                    Date deb = sdf.parse(heur_deb);
+                    Date fin = sdf.parse(heur_fin);
+                    long diff =  fin.getTime() - deb.getTime();
+                    long difference = deb.getTime() - debinit.getTime();
+                    nbHeures = diff / 3600000.0f;
+                    nbHeuresdebut = difference / 3600000.0f;
+                    System.out.println("temps ecouler debut = :" + nbHeuresdebut );
+                    System.out.println("temps ecouler = :" + heur_deb );
+                    System.out.println("temps ecouler = :" + heur_fin );
+                    System.out.println("temps ecouler = :" + nbHeures );
+                    }
+                    catch (ParseException ex) {
+                    }
+                        
+                    JButton a = new JButton("acheter");
+                    JPanel panelcours = new JPanel();
+                    System.out.println("screenWidth/8 = :" + screenWidth/8 );
+                    System.out.println("(screenHigh/7) = :" + (screenHigh/7) );
+                    System.out.println("heur = :" + minute_deb );
+                    System.out.println("heur = :" + minute_fin );
+                    //System.out.println("heur = :" + temps );
+                    System.out.println("heur = :" + heur );
+                    System.out.println("minute = :" + (((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeuresdebut*2) )/2 )));
+                    System.out.println("screen width = :" + screenWidth );
+                    System.out.println("taille case = :" + ((gridh-(screenHigh/7))/12) );
+                    System.out.println("cours loc = :" + ((screenHigh/7)+(((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 ))));
+                    System.out.println("cours size = :" + (((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 )));
+                    panelcours.setLocation((screenWidth/8)+((gridw-(screenWidth/8))/6)*j, ((screenHigh/7)+(((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeuresdebut*2) )/2 ))));
+                    panelcours.setSize((gridw-(screenWidth/8))/6, (((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 )));
+                    //panelcours.setLocation(0,0);
+                    
+                    //panelcours.setSize(screenWidth-500,screenHigh-500);
+                    panelcours.add(a);
+                    panelcours.setBackground(Color.yellow);
+                    mainWindow.add(panelcours);
+                    System.out.println("afficher");
+        
     }
 }

@@ -23,7 +23,7 @@ public class ProjetJavaINGE3 {
      * @param args the command line arguments
      */
 public static void main(String[] args) throws ClassNotFoundException, SQLException {
-    new BigWindow(0,"a",0);
+    new BigWindow(0,"a",0,null);
     Connection conn = null;
     boolean check=false;
     

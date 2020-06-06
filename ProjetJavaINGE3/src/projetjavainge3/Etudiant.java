@@ -5,7 +5,10 @@
  */
 package projetjavainge3;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**vbriubvuehbvr
  *
@@ -40,6 +43,10 @@ public class Etudiant {
         return this.id_utilisateur;
     }
     
+    public ArrayList<Seance> getab(){
+        return this.tab;
+    }
+    
     public void affichecours(){
         System.out.println("tab:"+tab.size());
         for(int i=0; i<tab.size();i++){
@@ -56,4 +63,26 @@ public class Etudiant {
         this.tab=e.getcours(this);
         System.out.println("AH");
     }        
+    
+    public String jours(String date) {
+
+        int year;
+        int month;
+        int day;
+        
+        year = Integer.parseInt(date.substring(0,4));
+        month = Integer.parseInt(date.substring(4,6));
+        day = Integer.parseInt(date.substring(6,8));
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        java.util.Date dates = cal.getTime();
+        DateFormat format = new SimpleDateFormat("EEEEEEEEE");
+        String dayFound = format.format(dates);
+        System.out.println("le jour est: " + dayFound);
+        return dayFound;
+
+    }
 }

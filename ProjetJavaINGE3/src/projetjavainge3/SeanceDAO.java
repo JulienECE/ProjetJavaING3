@@ -14,12 +14,13 @@ import java.sql.Connection;
 public class SeanceDAO extends DAO<Seance>{
 
     private int id;
-    private int semaine,  date,  heur_debut, heur_fin, etat, id_cours, id_type;
+    private int semaine,  date,  etat, id_cours, id_type;
+    private String  heur_debut, heur_fin;
     
     public SeanceDAO(Connection conn) {
         super(conn);
     }
-    public SeanceDAO(Connection conn,int id,int semaine, int date, int heur_debut,int heur_fin,int etat,int id_cours,int id_type) {
+    public SeanceDAO(Connection conn,int id,int semaine, int date, String heur_debut,String heur_fin,int etat,int id_cours,int id_type) {
         super(conn);
         this.id=id;
         this.semaine=semaine;

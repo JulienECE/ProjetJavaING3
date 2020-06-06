@@ -85,7 +85,6 @@ public class Login1 implements ActionListener{
          panelLogin.add(messageDroit);
          panelLogin.add(droit);
          
-
          if(type==false){
              panelLogin.add(login2Button);
          }
