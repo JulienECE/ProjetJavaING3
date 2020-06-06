@@ -80,13 +80,13 @@ public class Login2 implements ActionListener
             System.out.println(etudiant.getid());
              new Login1(tests,window,name,page,types);
             if(valide==false){
-               new BigWindow(1,name,page);
+               new BigWindow(1,name,page,etudiant);
                window.setVisible(false);
                mainWindow.setVisible(false);
             }
             
             if(valide==true){
-               new BigWindow(2,name,page);
+               new BigWindow(2,name,page,etudiant);
                window.setVisible(false);
                mainWindow.setVisible(false);
             }

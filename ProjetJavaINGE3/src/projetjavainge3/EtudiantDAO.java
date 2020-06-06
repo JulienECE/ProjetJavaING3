@@ -8,6 +8,7 @@ package projetjavainge3;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -83,17 +84,18 @@ public class EtudiantDAO extends DAO<Etudiant>{
       {
           
       }
-          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getInt(4),resultat.getInt(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
           Seance seance = seanceDAO.create();
           tab.add(seance);   
       }
+        
       while(result.next())
       {
           System.out.println("alint 2");
           ResultSet resultat = this.connect.createStatement(
           ResultSet.TYPE_SCROLL_INSENSITIVE,
           ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
-          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getInt(4),resultat.getInt(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
           Seance seance = seanceDAO.create();
           tab.add(seance);     
       }
