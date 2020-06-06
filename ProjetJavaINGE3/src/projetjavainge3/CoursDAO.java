@@ -8,6 +8,7 @@ package projetjavainge3;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 
 
 /**
@@ -15,6 +16,7 @@ import java.sql.SQLException;
  * @author Asus
  */
 public class CoursDAO extends DAO<Cours>{
+    private JFrame a;
 
     public CoursDAO(Connection conn) {
         super(conn);
@@ -37,7 +39,7 @@ public class CoursDAO extends DAO<Cours>{
 
     @Override
     public Cours find(int id) {
-        Cours cours = new Cours();      
+        Cours cours = new Cours(a);      
       
     try {
       ResultSet result = this.connect.createStatement(
