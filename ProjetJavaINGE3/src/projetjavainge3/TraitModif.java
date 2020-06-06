@@ -49,9 +49,10 @@ public class TraitModif implements ActionListener {
          
          
          test.setVisible(false);
-         
-         new BigWindow(1,"martins",0,null);
-         main.setVisible(false);
+         DAOFactory dao = new DAOFactory();
+         dao.modifSeance(1,semaine, date, hd, hf,etat);
+         //new BigWindow(1,"martins",0,null);
+         //main.setVisible(false);
          
       }
 }
