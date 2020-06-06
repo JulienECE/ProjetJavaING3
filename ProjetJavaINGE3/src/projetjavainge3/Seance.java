@@ -56,4 +56,27 @@ public class Seance {
     public int getetat(){
         return this.etat;
     }
+    public void setid(int ide){
+        this.id=ide;
+    }
+    
+    public void setsemaine(int sem){
+        this.semaine=sem;
+    }
+    
+    public void setdate(int d){
+         this.date=d;
+    }
+    
+    public void setheure_debut(String hd){
+        this.heure_debut=hd;
+    }
+    
+    public void setheure_fin(String hf){
+         this.heure_fin=hf;
+    }
+    
+    public void setetat(int e){
+         this.etat=e;
+    }
 }

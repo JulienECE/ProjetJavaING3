@@ -13,9 +13,11 @@ import java.sql.Statement;
 
 
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -110,6 +112,34 @@ try {
     }
     return new UtilisateurDAO(conn);
       
+  }
+  public void modifSeance(int id,int s, int d, int hd, int hf, int et){
+
+
+         
+         String query2 = "update seance set semaine=?,date=?,heure_debut=?,heur_fin=?,etat=? where id="+id;
+         
+         PreparedStatement pst2;
+      try{
+          
+          pst2 = conn.prepareStatement(query2);
+          pst2.setInt(1, s);
+          pst2.setInt(2, d);
+          pst2.setInt(3, hd);
+          pst2.setInt(4, hf);
+          pst2.setInt(5, et);
+          
+          pst2.executeUpdate();
+
+          
+          JOptionPane.showMessageDialog(null, "SUCCES");
+
+
+      }catch(SQLException e) {
+          System.out.println(e);
+    }
+
+
   }
   
   
