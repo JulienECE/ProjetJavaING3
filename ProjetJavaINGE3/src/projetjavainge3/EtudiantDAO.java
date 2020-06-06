@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -56,7 +57,7 @@ public class EtudiantDAO extends DAO<Etudiant>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public ArrayList<Seance> getcours(Etudiant user){
+    public ArrayList<Seance> getcours(Etudiant user, int semaine){
       System.out.println("taille"+user.getid());
       try{
       ResultSet result = this.connect.createStatement(
@@ -74,7 +75,8 @@ public class EtudiantDAO extends DAO<Etudiant>{
       ResultSet.TYPE_SCROLL_INSENSITIVE,
       ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_groupes where ID_GROUPE = '"+id_groupe+"'");
       System.out.println("dedans");
-      if(result.first())
+      result.beforeFirst();
+      /*if(result.first())
       {
            System.out.println("a lint1");
           ResultSet resultat = this.connect.createStatement(
@@ -87,17 +89,28 @@ public class EtudiantDAO extends DAO<Etudiant>{
           SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
           Seance seance = seanceDAO.create();
           tab.add(seance);   
-      }
+      }*/
         
       while(result.next())
       {
+        Calendar cal = Calendar.getInstance();
+        if(semaine==0){
+           semaine = cal.get(Calendar.WEEK_OF_YEAR);
+        }
+        
           System.out.println("alint 2");
           ResultSet resultat = this.connect.createStatement(
           ResultSet.TYPE_SCROLL_INSENSITIVE,
-          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"' AND SEMAINE = '"+semaine+"'");
+         if(resultat.first())
+      {
+           System.out.println("alint 3: "+this.connect+""+resultat.getInt(1)+""+resultat.getInt(2)+""+resultat.getInt(3)+""+resultat.getString(4)+""+resultat.getString(5)+""+resultat.getInt(6)+""+resultat.getInt(7)+""+resultat.getInt(8));
           SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          System.out.println("alint 2");
           Seance seance = seanceDAO.create();
-          tab.add(seance);     
+          tab.add(seance); 
+      }
+             
       }
       }catch(SQLException e){
           System.out.println("ERREUR");

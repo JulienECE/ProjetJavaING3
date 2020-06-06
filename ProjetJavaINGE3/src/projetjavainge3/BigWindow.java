@@ -132,6 +132,7 @@ public class BigWindow {
 
      
      String debut = "0830";
+     int nombre_semaine = 30;
      
       // INITIALISE LOG BUTTON
       
@@ -202,6 +203,8 @@ public class BigWindow {
       JPanel panelfilm = new JPanel();
       JPanel panelbot = new JPanel();
       JPanel panel = new JPanel();
+      JPanel semaine = new JPanel();
+      semaine.setLayout(new GridLayout(1, nombre_semaine));
       JPanel panel2 = new JPanel();
       JPanel panel3 = new JPanel();
       JPanel basketpanel = new JPanel();
@@ -253,7 +256,8 @@ public class BigWindow {
       paneldroite.setBackground(Color.decode("#f5f2ce"));
       //panelfilm.setBackground(Color.magenta);
       //panelbot.setBackground(Color.red);
-      panel.setBackground(Color.white);
+      panel.setBackground(Color.decode("#fecc00"));
+      semaine.setBackground(Color.decode("#fecc00"));
       //panel2.setBackground(Color.black);
       //panel3.setBackground(Color.white);
       //paneldes1.setBackground(Color.white);
@@ -299,7 +303,8 @@ public class BigWindow {
            int gridh=(screenHigh-(screenHigh/7)+(screenHigh/7));
             //IMAGES
             
-            panel.setSize(gridw-(screenWidth/8),gridh-(screenWidth/7));
+            panel.setSize(gridw-(screenWidth/8),gridh-(screenHigh/4));
+            semaine.setSize(gridw-(screenWidth/8),((gridh-(screenHigh/4))/28));
             panel2.setSize(screenWidth,screenHigh);
             panel3.setSize(3*(screenHigh-2*(screenHigh/5))/12, (screenHigh-2*(screenHigh/5))/3);
         
@@ -334,6 +339,7 @@ public class BigWindow {
             //IMAGES
       
             panel.setLocation(screenWidth/8,screenHigh/7);
+            semaine.setLocation(screenWidth/8,(screenHigh/7)-((gridh-(screenHigh/4))/28));
             panel2.setLocation(0,0);
             panel3.setLocation(screenWidth/6,(screenHigh/5)+2*(screenHigh-2*(screenHigh/5))/3);
             
@@ -406,6 +412,7 @@ public class BigWindow {
         int j=0;
         for(int i=0;i<etudiant.getab().size();i++)
         {
+            
             String date_etudiant = String.valueOf(etudiant.getab().get(i).getdate());
             String jour = etudiant.jours(date_etudiant);
             System.out.println("le jour est: " + jour);
@@ -463,11 +470,19 @@ public class BigWindow {
       paneldes3.add(des3);
       welcomepanel.add(wmessage);
       basketpanel.add(basket);
-
+      
+      for(int i=0;i<nombre_semaine;i++){
+        String a=String.valueOf(i+1);
+        JButton but = new JButton(a);
+        semaine.add(but);
+      }
+      
+      
      //AFFICHAGE PANELS
-
-     
+      
+     mainWindow.add(semaine);
      mainWindow.add(panel);
+     
      mainWindow.add(panelgauche);  
      mainWindow.add(paneldroite); 
      mainWindow.add(panelnext); 
@@ -487,18 +502,14 @@ public class BigWindow {
      //mainWindow.add(paneldes2);
      //mainWindow.add(paneldes3);
       
-    // mainWindow.add(panelreg); 
+     // mainWindow.add(panelreg); 
+     
      mainWindow.add(panelentete);  
+        
+     // mainWindow.add(panelbot);
+     // mainWindow.add(panelfilm); 
      
-     
-     
-    // mainWindow.add(panelbot);
-    // mainWindow.add(panelfilm); 
-     
-       
-     
-    // Display the window.
-      
+     // Display the window.
     mainWindow.setVisible(true);
     }
     
@@ -528,6 +539,7 @@ public class BigWindow {
                     long difference = deb.getTime() - debinit.getTime();
                     nbHeures = diff / 3600000.0f;
                     nbHeuresdebut = difference / 3600000.0f;
+                    System.out.println("diff" + diff );
                     System.out.println("temps ecouler debut = :" + nbHeuresdebut );
                     System.out.println("temps ecouler = :" + heur_deb );
                     System.out.println("temps ecouler = :" + heur_fin );
@@ -549,11 +561,17 @@ public class BigWindow {
                     System.out.println("taille case = :" + ((gridh-(screenHigh/7))/12) );
                     System.out.println("cours loc = :" + ((screenHigh/7)+(((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 ))));
                     System.out.println("cours size = :" + (((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 )));
-                    panelcours.setLocation((screenWidth/8)+((gridw-(screenWidth/8))/6)*j, ((screenHigh/7)+(((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeuresdebut*2) )/2 ))));
-                    panelcours.setSize((gridw-(screenWidth/8))/6, (((gridh-(screenHigh/7))/12)*( ( Math.round(nbHeures*2) )/2 )));
-                    //panelcours.setLocation(0,0);
-                    
-                    //panelcours.setSize(screenWidth-500,screenHigh-500);
+                   // nbHeuresdebut=1;
+                    int ax,bx,cx;
+                    ax=(gridh-(screenHigh/4));
+                    bx=ax/12;
+                    System.out.println("taille screen carre = :" + bx );
+                    System.out.println("taille screen  = :" + ax );
+                    System.out.println("loc screen  = :" + screenHigh/4 );
+                    System.out.println("nb h screen  = :" + ( ( Math.round(nbHeures*2) )/2 ));
+                    panelcours.setLocation((screenWidth/8)+((gridw-(screenWidth/8))/6)*j, ((screenHigh/7)+ Math.round(((float)((gridh-(screenHigh/4))/12)*( nbHeuresdebut ))))+3);
+                    panelcours.setSize((gridw-(screenWidth/8))/6, Math.round(((float)((gridh-(screenHigh/4))/12)*(nbHeures))));
+                    panelcours.setLayout(new GridLayout(1, 1));
                     panelcours.add(a);
                     panelcours.setBackground(Color.yellow);
                     mainWindow.add(panelcours);
