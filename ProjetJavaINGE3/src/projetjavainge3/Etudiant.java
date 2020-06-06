@@ -49,6 +49,10 @@ public class Etudiant {
         return this.tab;
     }
     
+    public void setTab(ArrayList<Seance> tab){
+        this.tab=tab;
+    }
+    
     public void affichecours(){
         System.out.println("tab:"+tab.size());
         for(int i=0; i<tab.size();i++){

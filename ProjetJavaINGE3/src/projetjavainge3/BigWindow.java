@@ -474,8 +474,11 @@ public class BigWindow {
       for(int i=0;i<nombre_semaine;i++){
         String a=String.valueOf(i+1);
         JButton but = new JButton(a);
+        but.addActionListener(new Semaine(etudiant));
+        but.setActionCommand(a);
         semaine.add(but);
       }
+      
       
       
      //AFFICHAGE PANELS
