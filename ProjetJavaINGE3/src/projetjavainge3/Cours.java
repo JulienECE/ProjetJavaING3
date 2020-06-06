@@ -26,6 +26,7 @@ public class Cours implements ActionListener {
         private JTextField prenom;
       
         private JFrame coursWindow;
+        private JFrame mainWindow;
        
      
         private JButton modifier;
@@ -36,7 +37,9 @@ public class Cours implements ActionListener {
         this.id=id;
         this.nom=nom;   
     }
-    public Cours(){
+    
+    public Cours(JFrame m){
+        mainWindow=m;
         
     }
     public void actionPerformed(ActionEvent e)
@@ -65,8 +68,8 @@ public class Cours implements ActionListener {
          
          coursWindow.add(panelCours);
          coursWindow.setVisible(true);
-         modifier.addActionListener(new Modif());
+         modifier.addActionListener(new Modif(mainWindow));
          //deplacer.addActionListener(new Cours());
-         supprimer.addActionListener(new Cours());
+         //supprimer.addActionListener(new Cours());
       }
 }

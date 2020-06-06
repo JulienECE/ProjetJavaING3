@@ -33,9 +33,13 @@ public class Modif implements ActionListener {
      private JTextField etat;
       
      private JFrame modifWindow;
+     private JFrame mainWindow;
        
      
      private JButton modifier2;
+     public Modif(JFrame m){
+         mainWindow=m;
+     }
     
     
     
@@ -86,7 +90,7 @@ public class Modif implements ActionListener {
          
          modifWindow.add(panelModif);
          modifWindow.setVisible(true);
-         modifier2.addActionListener(new TraitModif(semaine,date,hd,hf,etat,modifWindow));
+         modifier2.addActionListener(new TraitModif(semaine,date,hd,hf,etat,modifWindow,mainWindow));
          
          
          

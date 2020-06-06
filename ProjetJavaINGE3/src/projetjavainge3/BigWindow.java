@@ -549,7 +549,7 @@ public class BigWindow {
                     }
                         
                     JButton a = new JButton("acheter");
-                    a.addActionListener(new Cours());
+                    a.addActionListener(new Cours(mainWindow));
                     JPanel panelcours = new JPanel();
                     System.out.println("screenWidth/8 = :" + screenWidth/8 );
                     System.out.println("(screenHigh/7) = :" + (screenHigh/7) );
