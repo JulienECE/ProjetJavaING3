@@ -31,7 +31,7 @@ public abstract class DAO<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    ArrayList<Seance> getcours(Etudiant user) {
+    ArrayList<Seance> getcours(Etudiant user,int semaine) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

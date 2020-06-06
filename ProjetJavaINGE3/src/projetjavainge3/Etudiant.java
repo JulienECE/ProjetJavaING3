@@ -30,7 +30,9 @@ public class Etudiant {
         this.user=user;
         this.id_utilisateur=id;
         System.out.println("AH");
-        this.addcours();
+        Calendar cal = Calendar.getInstance();
+        int semaine = cal.get(Calendar.WEEK_OF_YEAR);
+        this.addcours(semaine);
         System.out.println("AH");
         
     }
@@ -55,12 +57,12 @@ public class Etudiant {
         }
     }
     
-    public void addcours(){     
+    public void addcours(int semaine){     
         DAOFactory f = new DAOFactory();
         System.out.println("c:"+id_utilisateur);
         DAO<Etudiant> e =f.getEtudiantDAO();
         System.out.println("d");
-        this.tab=e.getcours(this);
+        this.tab=e.getcours(this,semaine);
         System.out.println("AH");
     }        
     
