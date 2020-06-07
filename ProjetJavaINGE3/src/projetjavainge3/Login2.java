@@ -93,6 +93,7 @@ public class Login2 implements ActionListener
                window.setVisible(false);
                //mainWindow.setVisible(false);
             }
+            
         }
         
         else{
