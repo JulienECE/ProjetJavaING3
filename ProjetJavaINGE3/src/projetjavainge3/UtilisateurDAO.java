@@ -206,6 +206,57 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
        }
        user.setTab_Cours(tabc);
       }
+      
+      if(type==2)
+      {
+      result = this.connect.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_enseignants where ID_ENSEIGNANT = '"+user.getid()+"'");
+
+      result.beforeFirst();
+        
+      while(result.next())
+      {
+        Calendar cal = Calendar.getInstance();
+        
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"' ORDER BY DATE ASC");
+           resultat.beforeFirst();
+          while(resultat.next())
+      {
+           System.out.println("alint 3: "+this.connect+""+resultat.getInt(1)+""+resultat.getInt(2)+""+resultat.getInt(3)+""+resultat.getString(4)+""+resultat.getString(5)+""+resultat.getInt(6)+""+resultat.getInt(7)+""+resultat.getInt(8));
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          System.out.println("alint 2");
+          Seance seance = seanceDAO.create();
+          tab.add(seance); 
+      }
+             
+      }
+      result = this.connect.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from enseignant where ID_UTILISATEUR = '"+user.getid()+"'");
+
+      result.beforeFirst();
+        ArrayList<Integer> tabi =new ArrayList();
+        ArrayList<Cours> tabc =new ArrayList();
+        while(result.next())
+        {
+            tabi.add(result.getInt(2));
+        }
+       for(int h=0;h<tabi.size();h++){
+           result = this.connect.createStatement(
+           ResultSet.TYPE_SCROLL_INSENSITIVE,
+           ResultSet.CONCUR_READ_ONLY).executeQuery("select * from cours where ID = '"+tabi.get(h)+"'");
+
+           result.beforeFirst(); 
+           while(result.next())
+        {
+            tabc.add(new Cours(tabi.get(h),result.getString(2)));
+        }
+       }
+       user.setTab_Cours(tabc);
+      }
       }catch(SQLException e){
           System.out.println("ERREUR");
       }

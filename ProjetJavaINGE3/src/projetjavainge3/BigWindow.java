@@ -405,13 +405,14 @@ public class BigWindow {
       
 
      if(type==0){
-         mainWindow.add(panellog);  
+         //mainWindow.add(panellog);  
      }
-      if(type==1){
+      if(type==1||type==2){
           System.out.println("entrer");
           //mainWindow.add(basketpanel);
         //mainWindow.add(welcomepanel);  
         int j=0;
+        System.out.println("cours:"+user.getab().size());
         for(int i=0;i<user.getab().size();i++)
         {
             
@@ -497,6 +498,34 @@ public class BigWindow {
         menu.add(but1);
       }
       
+      
+      if(type==3){
+      JPanel deroul = new JPanel();
+        deroul.setLayout(new FlowLayout());
+           deroul.setBackground(Color.red);
+
+        deroul.setSize(screenWidth,30);
+        deroul.setLocation(0,((gridh-(screenHigh/4))/20));
+           
+       String[] tabs = new String[user.getab().size()+1];
+       
+       
+       
+       //tabs[0] = user.getabcours().get(j).getnom();
+        //for(int i = 0; i < user.getab().size(); i++) {
+        //    if(user.getab().get(i).getid_cours()== user.getabcours().get(j).getid()){
+        //        tabs[i+1] = "Jours: " + String.valueOf(user.getab().get(i).getdate()).substring(6,8)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(4,6)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(0,4)+" Semaine: "+String.valueOf(user.getab().get(i).getsemaine())+" Heur debut: "+user.getab().get(i).getheure_debut().substring(0,2)+":"+user.getab().get(i).getheure_debut().substring(2,4)+" Heur fin: "+user.getab().get(i).getheure_fin().substring(0,2)+":"+user.getab().get(i).getheure_fin().substring(2,4)+" Type:"+String.valueOf(user.getab().get(i).getType());
+       //     }
+       // }
+        
+        JComboBox liste1 = new JComboBox(tabs);
+
+        //deroul.add(liste1);
+        
+        mainWindow.add(deroul);
+      
+      }
+      
      //AFFICHAGE PANELS
       
      mainWindow.add(semaine);
@@ -578,7 +607,7 @@ public class BigWindow {
             {
                  a = new JButton("oui");
             }
-            if(  (user.getdroit()==2)){
+            if(  (user.getdroit()==3)){
 
                 a.addActionListener(new Cours(mainWindow,id));
 
