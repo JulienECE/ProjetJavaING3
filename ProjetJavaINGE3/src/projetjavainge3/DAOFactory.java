@@ -82,6 +82,50 @@ try {
     return new UtilisateurDAO(conn);
   } 
   
+  public ArrayList <String> getnom(int id_cours,int id){
+     ArrayList <String> a= new ArrayList();
+     System.out.print("OE"); 
+      try{
+          System.out.print("OE"); 
+      ResultSet result = this.conn.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from cours where ID = '"+id_cours+"'");
+
+      if(result.first())
+      {
+          System.out.print("OE:"+id); 
+          String b = result.getString(2);
+          System.out.print("OE:"+result.getString(2));
+          a.add(b);
+          System.out.print("OE:"); 
+      }
+      System.out.print("OE:"); 
+        ResultSet resulta = this.conn.createStatement(
+        ResultSet.TYPE_SCROLL_INSENSITIVE,
+        ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_enseignants where ID_SEANCE = '"+id+"'");
+        System.out.print("OE:"+id); 
+        if(resulta.first())
+        {
+            System.out.print("OE:"+resulta.getInt(2)); 
+            ResultSet resultat = this.conn.createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY).executeQuery("select * from utilisateur where ID = '"+resulta.getInt(2)+"'");
+                if(resultat.first())
+            {
+                System.out.print("oui:"+resultat.getString(4)); 
+                System.out.print("oui:"+resultat.getString(5)); 
+                a.add(resultat.getString(4));
+                a.add(resultat.getString(5));
+            }
+        } 
+      }catch(SQLException e) {
+           System.out.print("n'a pas recup le bon nom de cours"); 
+    }
+     return a;
+      
+  } 
+  
+  
   public DAO getuser(String name,String prenom,String mdp){
       
       try{
@@ -99,10 +143,7 @@ try {
       if(result.first())
       {
           System.out.println(result.getInt(6)); 
-          if(result.getInt(6)==0){
-              return new UtilisateurDAO(conn,result);
-          }
-          if(result.getInt(6)==1){
+          if(result.getInt(6)==1||result.getInt(6)==2){
               return new UtilisateurDAO(conn,result);
           }
       }

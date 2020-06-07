@@ -57,13 +57,13 @@ public class Register implements ActionListener{
          System.out.println(name+"\n"+mdp);
 
          if(check==true){
-             new BigWindow(1,name,page,null);
+             new BigWindow(mainWindow,1,name,page,null);
             window.setVisible(false);
             mainWindow.setVisible(false);
          }
                  
          if(check==false){
-               new BigWindow(1,name,page,null);
+               new BigWindow(mainWindow,1,name,page,null);
             window.setVisible(false);
             mainWindow.setVisible(false);
          }

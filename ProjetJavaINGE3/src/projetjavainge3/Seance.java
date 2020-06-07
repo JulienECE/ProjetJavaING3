@@ -45,6 +45,10 @@ public class Seance {
         return this.date;
     }
     
+    public int getid_cours(){
+        return this.id_cours;
+    }
+    
     public String getheure_debut(){
         return this.heure_debut;
     }

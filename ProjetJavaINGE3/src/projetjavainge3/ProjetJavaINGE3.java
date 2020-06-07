@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JFrame;
 //iudv_eunv_uienvizuvn
 
 /**
@@ -23,7 +24,13 @@ public class ProjetJavaINGE3 {
      * @param args the command line arguments
      */
 public static void main(String[] args) throws ClassNotFoundException, SQLException {
-    new BigWindow(0,"a",0,null);
+    JFrame mainWindow = new JFrame();  
+
+    String username=null;
+    int page=0;
+    
+    new Login1(true,mainWindow,username,page,false);
+    //new BigWindow(mainWindow,0,"a",0,null);
     Connection conn = null;
     boolean check=false;
     
