@@ -38,6 +38,7 @@ public class Utilisateur {
         System.out.println("d");
     }
     
+    
     public void setTab(ArrayList<Seance> tab){
         this.tab=tab;
     }
@@ -62,6 +63,12 @@ public class Utilisateur {
     }
     public int getdroit(){
         return droit;
+    }
+    public String getnom(){
+        return nom;
+    }
+    public String getprenom(){
+        return prenom;
     }
     
     public String jours(String date) {

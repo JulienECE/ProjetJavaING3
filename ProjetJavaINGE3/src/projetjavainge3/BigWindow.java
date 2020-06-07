@@ -498,34 +498,19 @@ public class BigWindow {
         menu.add(but1);
       }
       
-      
-      if(type==3){
       JPanel deroul = new JPanel();
         deroul.setLayout(new FlowLayout());
            deroul.setBackground(Color.red);
 
         deroul.setSize(screenWidth,30);
         deroul.setLocation(0,((gridh-(screenHigh/4))/20));
-           
-       String[] tabs = new String[user.getab().size()+1];
-       
-       
-       
-       //tabs[0] = user.getabcours().get(j).getnom();
-        //for(int i = 0; i < user.getab().size(); i++) {
-        //    if(user.getab().get(i).getid_cours()== user.getabcours().get(j).getid()){
-        //        tabs[i+1] = "Jours: " + String.valueOf(user.getab().get(i).getdate()).substring(6,8)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(4,6)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(0,4)+" Semaine: "+String.valueOf(user.getab().get(i).getsemaine())+" Heur debut: "+user.getab().get(i).getheure_debut().substring(0,2)+":"+user.getab().get(i).getheure_debut().substring(2,4)+" Heur fin: "+user.getab().get(i).getheure_fin().substring(0,2)+":"+user.getab().get(i).getheure_fin().substring(2,4)+" Type:"+String.valueOf(user.getab().get(i).getType());
-       //     }
-       // }
-        
-        JComboBox liste1 = new JComboBox(tabs);
-
-        //deroul.add(liste1);
-        
-        mainWindow.add(deroul);
-      
+      if(type==3){
+        System.out.println("ouai ma gyele");
+        Fenetre f =  new Fenetre(user,mainWindow, page, name);
+        deroul=f.addpanel();
       }
       
+      mainWindow.add(deroul);
      //AFFICHAGE PANELS
       
      mainWindow.add(semaine);
@@ -641,5 +626,9 @@ public class BigWindow {
             mainWindow.add(panelcours);
             System.out.println("afficher");
         
+    }
+
+    private JLabel Fenetre(Utilisateur user, JFrame mainWindow, int page, String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

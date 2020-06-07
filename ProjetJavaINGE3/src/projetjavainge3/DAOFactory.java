@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -125,6 +126,26 @@ try {
       
   } 
   
+  public ArrayList<Utilisateur> getall(){
+      ArrayList<Utilisateur> tab_user =new ArrayList();
+      Utilisateur user = new Utilisateur();
+      int a;
+      try{
+      ResultSet result = this.conn.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from utilisateur");
+      result.beforeFirst();
+
+        
+      while(result.next())
+      {
+          user = new Utilisateur(result.getInt(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getInt(6));   
+          tab_user.add(user);
+      }
+      }catch(SQLException e) {
+      }
+      return tab_user;
+  }
   
   public DAO getuser(String name,String prenom,String mdp){
       

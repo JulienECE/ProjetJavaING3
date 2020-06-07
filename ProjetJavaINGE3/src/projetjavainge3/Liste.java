@@ -92,17 +92,27 @@ public class Liste  implements ActionListener{
            
            JPanel deroul = new JPanel();
         deroul.setLayout(new FlowLayout());
-           deroul.setBackground(Color.red);
-
+           deroul.setBackground(Color.decode("#fecc00"));
+           int temp=0;
         deroul.setSize(screenWidth,30);
-        deroul.setLocation(0,((gridh-(screenHigh/4))/20));
-           
-       String[] tabs = new String[user.getab().size()+1];
-       
-       tabs[0] = user.getabcours().get(j).getnom();
+        deroul.setLocation(0,((gridh-(screenHigh/4))/20)*(j+1));
+        
         for(int i = 0; i < user.getab().size(); i++) {
             if(user.getab().get(i).getid_cours()== user.getabcours().get(j).getid()){
-                tabs[i+1] = "Jours: " + String.valueOf(user.getab().get(i).getdate()).substring(6,8)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(4,6)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(0,4)+" Semaine: "+String.valueOf(user.getab().get(i).getsemaine())+" Heur debut: "+user.getab().get(i).getheure_debut().substring(0,2)+":"+user.getab().get(i).getheure_debut().substring(2,4)+" Heur fin: "+user.getab().get(i).getheure_fin().substring(0,2)+":"+user.getab().get(i).getheure_fin().substring(2,4)+" Type:"+String.valueOf(user.getab().get(i).getType());
+                temp++;
+            }
+        }
+           System.out.println("temp:"+temp);
+       String[] tabs = new String[temp+1];
+       
+       tabs[0] = user.getabcours().get(j).getnom();
+       System.out.println("nom:"+user.getabcours().get(j).getnom());
+       temp=0;
+        for(int i = 0; i < user.getab().size(); i++) {
+            
+            if(user.getab().get(i).getid_cours()== user.getabcours().get(j).getid()){
+                temp++;
+                tabs[temp] = "Jours: " + String.valueOf(user.getab().get(i).getdate()).substring(6,8)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(4,6)+"/"+String.valueOf(user.getab().get(i).getdate()).substring(0,4)+" Semaine: "+String.valueOf(user.getab().get(i).getsemaine())+" Heur debut: "+user.getab().get(i).getheure_debut().substring(0,2)+":"+user.getab().get(i).getheure_debut().substring(2,4)+" Heur fin: "+user.getab().get(i).getheure_fin().substring(0,2)+":"+user.getab().get(i).getheure_fin().substring(2,4)+" Type:"+String.valueOf(user.getab().get(i).getType());
             }
         }
         
