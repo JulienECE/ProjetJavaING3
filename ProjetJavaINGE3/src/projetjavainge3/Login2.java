@@ -94,6 +94,12 @@ public class Login2 implements ActionListener
                //mainWindow.setVisible(false);
             }
             
+            if(user.getdroit()==3){
+               new BigWindow(mainWindow,3,name,page,user);
+               window.setVisible(false);
+               //mainWindow.setVisible(false);
+            }
+            
         }
         
         else{

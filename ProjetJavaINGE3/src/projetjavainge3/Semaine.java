@@ -17,7 +17,7 @@ import javax.swing.JFrame;
 public class Semaine implements ActionListener{
 
     private Utilisateur util;
-    private int page;
+    private int page,type;
     private String username;
     private JFrame window;
     
@@ -26,6 +26,7 @@ public class Semaine implements ActionListener{
         this.username=username;
         this.page=page;
         this.window=e;
+        this.type=type;
     }
     
     @Override
@@ -36,7 +37,8 @@ public class Semaine implements ActionListener{
        DAOFactory f = new DAOFactory();
        DAO<Utilisateur> user =f.getUtilisateurDAO();
        util.setTab(user.getcours(util,Integer.parseInt(num_semaine),0));
-       new BigWindow(window,1,username,page,util);
+       System.out.println("UYBUYGY8UB:"+util.getdroit());
+       new BigWindow(window,util.getdroit(),username,page,util);
        
     }
 }

@@ -143,7 +143,7 @@ try {
       if(result.first())
       {
           System.out.println(result.getInt(6)); 
-          if(result.getInt(6)==1||result.getInt(6)==2){
+          if(result.getInt(6)==1||result.getInt(6)==2||result.getInt(6)==3){
               return new UtilisateurDAO(conn,result);
           }
       }
