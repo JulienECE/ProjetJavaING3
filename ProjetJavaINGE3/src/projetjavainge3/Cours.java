@@ -38,8 +38,9 @@ public class Cours implements ActionListener {
         this.nom=nom;   
     }
     
-    public Cours(JFrame m){
+    public Cours(JFrame m,int i){
         mainWindow=m;
+        id=i;
         
     }
     public int getid(){
@@ -68,14 +69,14 @@ public class Cours implements ActionListener {
          
       
          panelCours.add(modifier);
-         panelCours.add(deplacer);
+         
          panelCours.add(supprimer);
          
          
          coursWindow.add(panelCours);
          coursWindow.setVisible(true);
-         modifier.addActionListener(new Modif(mainWindow));
-         //deplacer.addActionListener(new Cours());
-         //supprimer.addActionListener(new Cours());
+         modifier.addActionListener(new Modif(mainWindow,id));
+         
+         supprimer.addActionListener(new Supp(id));
       }
 }

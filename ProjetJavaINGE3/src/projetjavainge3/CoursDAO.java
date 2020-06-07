@@ -17,6 +17,7 @@ import javax.swing.JFrame;
  */
 public class CoursDAO extends DAO<Cours>{
     private JFrame a;
+     private int id;
 
     public CoursDAO(Connection conn) {
         super(conn);
@@ -39,7 +40,7 @@ public class CoursDAO extends DAO<Cours>{
 
     @Override
     public Cours find(int id) {
-        Cours cours = new Cours(a);      
+        Cours cours = new Cours(a,id);      
       
     try {
       ResultSet result = this.connect.createStatement(

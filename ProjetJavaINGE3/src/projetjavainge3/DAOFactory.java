@@ -157,23 +157,81 @@ try {
   public void modifSeance(int id,int s, int d, int hd, int hf, int et){
 
 
-         
+         String query1 ="select * from seance where date="+d;
+
          String query2 = "update seance set semaine=?,date=?,heure_debut=?,heur_fin=?,etat=? where id="+id;
-         
+
+         PreparedStatement pst2;
+         int rowCount = 0;
+         boolean libre=true;
+         int hdd=0;
+         int hff=0;
+      try{
+          Statement st= conn.createStatement();
+          ResultSet rs = st.executeQuery(query1);
+
+
+          rs.last(); //make cursor to point to the last row in the ResultSet object
+          rowCount = rs.getRow();
+          rs.beforeFirst(); //make cursor to point to the front of the ResultSet object, just before the first row.
+
+          System.out.println("Total number of rows in ResultSet object = "+rowCount);
+          while(rs.next()){
+                System.out.print("HD: "+rs.getInt("HEURE_DEBUT")+", ");
+                System.out.print("HF: "+rs.getInt("HEUR_FIN")+", ");
+                hdd=rs.getInt("HEURE_DEBUT");
+                hff=rs.getInt("HEUR_FIN");
+                if( ((hd>hdd)&&(hd<hff)) || ((hf>hdd)&&(hf<hff)) ){
+                    libre=false;
+
+                }
+
+          }
+          if(libre==false){
+              JOptionPane.showMessageDialog(null, "PLAGE HORAIRE OCCUPEE");
+          }
+          if(libre==true){
+                pst2 = conn.prepareStatement(query2);
+                pst2.setInt(1, s);
+                pst2.setInt(2, d);
+                pst2.setInt(3, hd);
+                pst2.setInt(4, hf);
+                pst2.setInt(5, et);
+
+                pst2.executeUpdate();
+
+
+                JOptionPane.showMessageDialog(null, "SEANCE MODIFIE AVEC SUCCES" );
+          }
+
+
+
+
+
+
+      }catch(SQLException e) {
+          System.out.println(e);
+    }
+
+
+  }
+  
+  public void suppSeance(int id){
+
+
+
+         String query2 = "delete from seance where ID="+id;
+
          PreparedStatement pst2;
       try{
-          
+
           pst2 = conn.prepareStatement(query2);
-          pst2.setInt(1, s);
-          pst2.setInt(2, d);
-          pst2.setInt(3, hd);
-          pst2.setInt(4, hf);
-          pst2.setInt(5, et);
-          
+
+
           pst2.executeUpdate();
 
-          
-          JOptionPane.showMessageDialog(null, "SUCCES");
+
+          JOptionPane.showMessageDialog(null, "SEANCE SUPPRIME AVEC SUCCES");
 
 
       }catch(SQLException e) {

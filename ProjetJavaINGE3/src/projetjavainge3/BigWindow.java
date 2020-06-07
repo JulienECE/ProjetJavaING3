@@ -579,10 +579,11 @@ public class BigWindow {
                  a = new JButton("oui");
             }
             if(  (user.getdroit()==2)){
-                a.addActionListener(new Cours(mainWindow));
-               // a.setActionCommand(id);
-                
+
+                a.addActionListener(new Cours(mainWindow,id));
+
             }
+            //a.addActionListener(new Cours(mainWindow,id));
             JPanel panelcours = new JPanel();
             System.out.println("screenWidth/8 = :" + screenWidth/8 );
             System.out.println("(screenHigh/7) = :" + (screenHigh/7) );
