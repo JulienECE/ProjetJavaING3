@@ -34,11 +34,14 @@ public class Modif implements ActionListener {
       
      private JFrame modifWindow;
      private JFrame mainWindow;
+     
+     private int id;
        
      
      private JButton modifier2;
-     public Modif(JFrame m){
+     public Modif(JFrame m,int i){
          mainWindow=m;
+         id=i;
      }
     
     
@@ -90,7 +93,7 @@ public class Modif implements ActionListener {
          
          modifWindow.add(panelModif);
          modifWindow.setVisible(true);
-         modifier2.addActionListener(new TraitModif(semaine,date,hd,hf,etat,modifWindow,mainWindow));
+         modifier2.addActionListener(new TraitModif(semaine,date,hd,hf,etat,modifWindow,mainWindow,id));
          
          
          

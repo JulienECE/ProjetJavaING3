@@ -27,8 +27,9 @@ public class TraitModif implements ActionListener {
     private JTextField etat1;
     private JFrame test;
     private JFrame main;
+    private int id;
     
-    public TraitModif(JTextField s, JTextField d,JTextField hdd,JTextField hff,JTextField e,JFrame t,JFrame m){
+    public TraitModif(JTextField s, JTextField d,JTextField hdd,JTextField hff,JTextField e,JFrame t,JFrame m,int i){
         semaine1=s;
         date1=d;
         hf1=hff;
@@ -36,6 +37,7 @@ public class TraitModif implements ActionListener {
         etat1=e;
         test=t;
         main=m;
+        id=i;
     }
     
     
@@ -50,7 +52,7 @@ public class TraitModif implements ActionListener {
          
          test.setVisible(false);
          DAOFactory dao = new DAOFactory();
-         dao.modifSeance(1,semaine, date, hd, hf,etat);
+         dao.modifSeance(id,semaine, date, hd, hf,etat);
          
          
       }
