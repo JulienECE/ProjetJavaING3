@@ -15,6 +15,8 @@ import java.sql.Statement;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -217,6 +219,105 @@ try {
 
   }
   
+  public void addCours(int s, int d, String dar, String far, int et,int idc,int idt,int ide,int idg){
+
+            int hd=Integer.parseInt(dar);
+            int hf=Integer.parseInt(far);
+         String query1 ="select * from seance where date="+d;
+
+         String query2 = "insert into seance (semaine,date,heure_debut,heur_fin,etat,id_cours,id_type) values (?,?,?,?,?,?,?)";
+
+         PreparedStatement pst2;
+         PreparedStatement pst3;
+         PreparedStatement pst4;
+         int rowCount = 0;
+         boolean libre=true;
+         int hdd=0;
+         int hff=0;
+      try{
+          Statement st= conn.createStatement();
+          ResultSet rs = st.executeQuery(query1);
+
+
+          rs.last(); //make cursor to point to the last row in the ResultSet object
+          rowCount = rs.getRow();
+          rs.beforeFirst(); //make cursor to point to the front of the ResultSet object, just before the first row.
+
+          System.out.println("Total number of rows in ResultSet object = "+rowCount);
+          while(rs.next()){
+                System.out.print("HD: "+rs.getInt("HEURE_DEBUT")+", ");
+                System.out.print("HF: "+rs.getInt("HEUR_FIN")+", ");
+                hdd=rs.getInt("HEURE_DEBUT");
+                hff=rs.getInt("HEUR_FIN");
+                if( ((hd>hdd)&&(hd<hff)) || ((hf>hdd)&&(hf<hff)) ){
+                    libre=false;
+
+                }
+
+          }
+          if(libre==false){
+              JOptionPane.showMessageDialog(null, "PLAGE HORAIRE OCCUPEE");
+          }
+          if(libre==true){
+                pst2 = conn.prepareStatement(query2);
+                pst2.setInt(1, s);
+                pst2.setInt(2, d);
+                pst2.setInt(3, hd);
+                pst2.setInt(4, hf);
+                pst2.setInt(5, et);
+                pst2.setInt(6, idc);
+                pst2.setInt(7, idt);
+
+                pst2.executeUpdate();
+
+
+                JOptionPane.showMessageDialog(null, "SEANCE AJOUTE AVEC SUCCES" );
+          }
+
+
+
+
+
+
+      }catch(SQLException e) {
+          System.out.println(e);
+    }
+      String query3 ="select ID from seance where date="+d+" and heure_debut="+hd+" and heur_fin="+hf;
+      String query4 = "insert into seance_enseignants (id_seance,id_enseignant) values (?,?)";
+      String query5 = "insert into seance_groupes (id_seance,id_groupe) values (?,?)";
+      Statement stt;
+      
+    try {
+        stt = conn.createStatement();
+        ResultSet rss = stt.executeQuery(query3);
+        rss.next();
+        int ids=rss.getInt(1);
+        
+        
+        pst3 = conn.prepareStatement(query4);
+                pst3.setInt(1, ids);
+                pst3.setInt(2, ide);
+                
+
+                
+        pst4 = conn.prepareStatement(query5);
+                pst4.setInt(1, ids);
+                pst4.setInt(2, idg);
+                
+                pst3.executeUpdate();
+                pst4.executeUpdate();
+                
+        
+        
+        
+        
+    } catch (SQLException e) {
+         System.out.println(e);
+    }
+      
+
+
+  }
   public void suppSeance(int id){
 
 
