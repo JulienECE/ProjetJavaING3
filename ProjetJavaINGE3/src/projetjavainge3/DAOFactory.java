@@ -154,9 +154,10 @@ try {
     return new UtilisateurDAO(conn);
       
   }
-  public void modifSeance(int id,int s, int d, int hd, int hf, int et){
+  public void modifSeance(int id,int s, int d, String dar, String far, int et){
 
-
+            int hd=Integer.parseInt(dar);
+            int hf=Integer.parseInt(far);
          String query1 ="select * from seance where date="+d;
 
          String query2 = "update seance set semaine=?,date=?,heure_debut=?,heur_fin=?,etat=? where id="+id;

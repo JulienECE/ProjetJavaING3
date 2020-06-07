@@ -7,6 +7,9 @@ package projetjavainge3;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,18 +44,38 @@ public class TraitModif implements ActionListener {
     }
     
     
+    @Override
      public void actionPerformed(ActionEvent e)
       {
-         int semaine=Integer.parseInt(semaine1.getText());
-         int date=Integer.parseInt(date1.getText());
-         int hd=Integer.parseInt(hd1.getText());
-         int hf=Integer.parseInt(hf1.getText());
+         //int semaine=Integer.parseInt(semaine1.getText());
+          int semaine;
+         String date=date1.getText();
+         int datess=Integer.parseInt(date1.getText());
+         String hd=hd1.getText();
+         String hf=hf1.getText();
          int etat=Integer.parseInt(etat1.getText());
          
-         
+        int year;
+        int month;
+        int day;
+        
+        year = Integer.parseInt(date.substring(0,4));
+        month = Integer.parseInt(date.substring(4,6));
+        day = Integer.parseInt(date.substring(6,8));
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        java.util.Date dates = cal.getTime();
+        DateFormat format = new SimpleDateFormat("ww");
+        String dayFound = format.format(dates);
+        System.out.println("la semaine est: " + dayFound);
+
+         semaine=Integer.parseInt(dayFound);
          test.setVisible(false);
          DAOFactory dao = new DAOFactory();
-         dao.modifSeance(id,semaine, date, hd, hf,etat);
+         dao.modifSeance(id,semaine, datess, hd, hf,etat);
          
          
       }
