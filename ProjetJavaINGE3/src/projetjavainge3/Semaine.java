@@ -8,6 +8,7 @@ package projetjavainge3;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,10 +16,16 @@ import java.util.ArrayList;
  */
 public class Semaine implements ActionListener{
 
-    private Etudiant etudiant;
+    private Utilisateur util;
+    private int page;
+    private String username;
+    private JFrame window;
     
-    public Semaine(Etudiant etudiant){
-        this.etudiant=etudiant;
+    public Semaine(Utilisateur util,String username,int page,JFrame e){
+        this.util=util;
+        this.username=username;
+        this.page=page;
+        this.window=e;
     }
     
     @Override
@@ -27,8 +34,9 @@ public class Semaine implements ActionListener{
        String num_semaine = e.getActionCommand();
        System.out.println(num_semaine);
        DAOFactory f = new DAOFactory();
-       DAO<Etudiant> user =f.getEtudiantDAO();
-       etudiant.setTab(user.getcours(etudiant,Integer.parseInt(num_semaine)));
+       DAO<Utilisateur> user =f.getUtilisateurDAO();
+       util.setTab(user.getcours(util,Integer.parseInt(num_semaine)));
+       new BigWindow(window,1,username,page,util);
+       
     }
-    //oeviuzehvçuizehbuiehb
 }

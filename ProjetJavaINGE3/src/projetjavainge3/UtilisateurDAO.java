@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -71,6 +72,119 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         return user;
     }
     
-    
+    public ArrayList<Seance> getcours(Utilisateur user, int semaine){
+      System.out.println("taille"+user.getid());
+      System.out.println(user.getid());
+      System.out.println(user.getdroit());
+      int id_groupe = 0;
+      try{
+          if(user.getdroit()==1){
+      ResultSet result = this.connect.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from etudiant where ID_UTILISATEUR = '"+user.getid()+"'");
+          
+
+      System.out.println("dedans1");
+      if(result.first())
+      {
+          System.out.println(result.getInt(3)); 
+      }
+      id_groupe = result.getInt(3);
+      }
+
+      if(user.getdroit()==1){
+      result = this.connect.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_groupes where ID_GROUPE = '"+id_groupe+"'");
+
+      System.out.println("dedans");
+      result.beforeFirst();
+      /*if(result.first())
+      {
+           System.out.println("a lint1");
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
+          if(resultat.first())
+      {
+          
+      }
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          Seance seance = seanceDAO.create();
+          tab.add(seance);   
+      }*/
+        
+      while(result.next())
+      {
+        Calendar cal = Calendar.getInstance();
+        if(semaine==0){
+           semaine = cal.get(Calendar.WEEK_OF_YEAR);
+        }
+        
+          System.out.println("alint 2");
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"' AND SEMAINE = '"+semaine+"'");
+         if(resultat.first())
+      {
+           System.out.println("alint 3: "+this.connect+""+resultat.getInt(1)+""+resultat.getInt(2)+""+resultat.getInt(3)+""+resultat.getString(4)+""+resultat.getString(5)+""+resultat.getInt(6)+""+resultat.getInt(7)+""+resultat.getInt(8));
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          System.out.println("alint 2");
+          Seance seance = seanceDAO.create();
+          tab.add(seance); 
+      }
+             
+      }
+      }
+      System.out.println("dedans");
+      if(user.getdroit()==2){
+      result = this.connect.createStatement(
+      ResultSet.TYPE_SCROLL_INSENSITIVE,
+      ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance_enseignants where ID_ENSEIGNANT = '"+user.getid()+"'");
+
+      System.out.println("dedans");
+      result.beforeFirst();
+      /*if(result.first())
+      {
+           System.out.println("a lint1");
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"'");
+          if(resultat.first())
+      {
+          
+      }
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          Seance seance = seanceDAO.create();
+          tab.add(seance);   
+      }*/
+        
+      while(result.next())
+      {
+        Calendar cal = Calendar.getInstance();
+        if(semaine==0){
+           semaine = cal.get(Calendar.WEEK_OF_YEAR);
+        }
+        
+          System.out.println("alint 2");
+          ResultSet resultat = this.connect.createStatement(
+          ResultSet.TYPE_SCROLL_INSENSITIVE,
+          ResultSet.CONCUR_READ_ONLY).executeQuery("select * from seance where ID = '"+result.getInt(1)+"' AND SEMAINE = '"+semaine+"'");
+         if(resultat.first())
+      {
+           System.out.println("alint 3: "+this.connect+""+resultat.getInt(1)+""+resultat.getInt(2)+""+resultat.getInt(3)+""+resultat.getString(4)+""+resultat.getString(5)+""+resultat.getInt(6)+""+resultat.getInt(7)+""+resultat.getInt(8));
+          SeanceDAO seanceDAO = new SeanceDAO(this.connect,resultat.getInt(1),resultat.getInt(2),resultat.getInt(3),resultat.getString(4),resultat.getString(5),resultat.getInt(6),resultat.getInt(7),resultat.getInt(8));
+          System.out.println("alint 2");
+          Seance seance = seanceDAO.create();
+          tab.add(seance); 
+      }
+             
+      }
+      }
+      }catch(SQLException e){
+          System.out.println("ERREUR");
+      }
+      return tab;
+  }
     
 }

@@ -74,21 +74,24 @@ public class Login2 implements ActionListener
          
         if(user.getid()!=0){
             System.out.println("OUI C BN GG");
-            Etudiant etudiant = user.isEtudiant();
-            etudiant.affichecours();
+            //Etudiant etudiant = user.isEtudiant();
+            //Enseignant enseignant = user.isEnseignant();
+            //etudiant.affichecours();
             
-            System.out.println(etudiant.getid());
+            //System.out.println(etudiant.getid());
+            System.out.println(user.getdroit());
+            if(user.getdroit()==1){
+            
              new Login1(tests,window,name,page,types);
-            if(valide==false){
-               new BigWindow(1,name,page,etudiant);
+               new BigWindow(mainWindow,1,name,page,user);
                window.setVisible(false);
-               mainWindow.setVisible(false);
+               //mainWindow.setVisible(false);
             }
             
-            if(valide==true){
-               new BigWindow(2,name,page,etudiant);
+            if(user.getdroit()==2){
+               new BigWindow(mainWindow,2,name,page,user);
                window.setVisible(false);
-               mainWindow.setVisible(false);
+               //mainWindow.setVisible(false);
             }
         }
         

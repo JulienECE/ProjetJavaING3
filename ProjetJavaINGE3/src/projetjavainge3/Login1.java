@@ -46,17 +46,14 @@ public class Login1 implements ActionListener{
             names=username;
             type=t;
             System.out.print("g_yuh");
-        }
-        
-      public void actionPerformed(ActionEvent e)
-      {
+
           System.out.print("L'utilisateur n'est pas trouvé!");
          // Set the panel's background to red.
         JPanel panelLogin;
         loginWindow = new JFrame();
         loginWindow.setTitle("Welcome Back");
         loginWindow.setLocation(800,400);
-        loginWindow.setSize(150,320);
+        loginWindow.setSize(150,250);
         loginWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); 
      
          messageMail = new JLabel("Email");
@@ -80,10 +77,10 @@ public class Login1 implements ActionListener{
          panelLogin.add(prenom);
          panelLogin.add(messagePass);
          panelLogin.add(password);
-         panelLogin.add(messageMail);
-         panelLogin.add(email);
-         panelLogin.add(messageDroit);
-         panelLogin.add(droit);
+         //panelLogin.add(messageMail);
+         //panelLogin.add(email);
+         //panelLogin.add(messageDroit);
+         //panelLogin.add(droit);
          
          if(type==false){
              panelLogin.add(login2Button);
@@ -105,15 +102,12 @@ public class Login1 implements ActionListener{
          //DISPLAY LOGIN WINDOW
          if(test==true){ 
          login2Button.addActionListener(new Login2(nom,password,prenom,loginWindow,window,page,names,test,type));
-         registerButton.addActionListener(new Login2(nom,password,prenom,loginWindow,window,page,names,test,type));
          }
-         
-         //DISPLAY THE REGISTER WINDOW
-         
-         if(test==false){
-         
-         login2Button.addActionListener(new Register(username,password,loginWindow,window,page,age));
-         registerButton.addActionListener(new Register(username,password,loginWindow,window,page,age));
-         }
+
       }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
