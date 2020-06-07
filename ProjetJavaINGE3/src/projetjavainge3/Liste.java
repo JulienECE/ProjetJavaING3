@@ -52,6 +52,7 @@ public class Liste  implements ActionListener{
         mainWindow.setTitle("MAIN WINDOW");
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setLocation(0,0);
+        
 
        
          // JLabel labelf =new JLabel();
@@ -66,6 +67,8 @@ public class Liste  implements ActionListener{
         
         JPanel menu = new JPanel();
         menu.setLayout(new GridLayout(1, 2));
+        
+        
         
         //panelcentre.setBackground(Color.white);
         //panelcentre.setSize(screenWidth/2,screenHigh/2);

@@ -227,6 +227,7 @@ public class BigWindow {
       JPanel paneldes3 = new JPanel();
       JPanel paneldes2 = new JPanel();
       JPanel panelentete = new JPanel();
+      JPanel paneladd = new JPanel();
       JPanel panelgauche = new JPanel();
       
       JPanel panelgauche1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -268,6 +269,10 @@ public class BigWindow {
       panelnext.add(next);
       panelprevious.add(previous);
       panellog.add(loginButton);
+      JButton ajout = new JButton("Ajouter");
+        
+        ajout.addActionListener(new AjouterCours());
+        paneladd.add(ajout);
       /*if(cars.get(0).get(1)!=null){
       buypanel1.add(buy1);
       }
@@ -293,6 +298,7 @@ public class BigWindow {
       panelprevious.setBackground(Color.decode("#fecc00"));
       //panelreg.setBackground(Color.blue);
       panelentete.setBackground(Color.decode("#fecc00"));
+      paneladd.setBackground(Color.decode("#fecc00"));
       panelgauche.setBackground(Color.decode("#f5f2ce"));
       
       panelgauche1.setBackground(Color.decode("#fecc00"));
@@ -333,6 +339,7 @@ public class BigWindow {
       panelfilm.setSize(screenWidth-screenWidth/5, screenHigh-2*(screenHigh/5));
       panelreg.setSize(screenWidth/8, screenHigh/7);
       panelentete.setSize(screenWidth, screenHigh/7);
+      paneladd.setSize(screenWidth, 100);
       panelgauche.setSize(screenWidth/8, screenHigh-(screenHigh/7));
       
       panelgauche1.setSize(screenWidth/8, 850/12);
@@ -409,6 +416,7 @@ public class BigWindow {
             welcomepanel.setLocation(0, 0);
             panelfilm.setLocation(screenWidth/5, screenHigh/5);
             panelentete.setLocation(0, 0);
+            paneladd.setLocation(0, 200);
             panelgauche.setLocation(0, screenHigh/7);
             
             panelgauche1.setLocation(0, (screenHigh/7)-2);
@@ -592,6 +600,7 @@ public class BigWindow {
       
       if(type==3){
       JPanel deroul = new JPanel();
+     
         deroul.setLayout(new FlowLayout());
            deroul.setBackground(Color.red);
 
@@ -614,6 +623,7 @@ public class BigWindow {
         //deroul.add(liste1);
         
         mainWindow.add(deroul);
+        mainWindow.add(ajouter);
       
       }
       
@@ -651,6 +661,7 @@ public class BigWindow {
      // mainWindow.add(panelreg); 
      
      mainWindow.add(panelentete);  
+     mainWindow.add(paneladd);  
         
      // mainWindow.add(panelbot);
      // mainWindow.add(panelfilm); 
