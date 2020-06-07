@@ -81,6 +81,19 @@ public class BigWindow {
   private JLabel des3;
   private JLabel wmessage;
   
+  private JLabel heure1;
+  private JLabel heure2;
+  private JLabel heure3;
+  private JLabel heure4;
+  private JLabel heure5;
+  private JLabel heure6;
+  private JLabel heure7;
+  private JLabel heure8;
+  private JLabel heure9;
+  private JLabel heure10;
+  private JLabel heure11;
+  private JLabel heure12;
+  
   private JFrame mainWindow;
   private Image scaleImage;
   
@@ -159,6 +172,19 @@ public class BigWindow {
       basket = new JButton("Basket");
       
       addmovie = new JButton("ADD MOVIE");
+      
+      heure1 = new JLabel("8h30");
+       heure2 = new JLabel("9h30");
+       heure3 = new JLabel("10h30");
+       heure4 = new JLabel("11h30");
+       heure5 = new JLabel("12h30");
+       heure6 = new JLabel("13h30");
+       heure7 = new JLabel("14h30");
+       heure8 = new JLabel("15h30");
+       heure9 = new JLabel("16h30");
+       heure10 = new JLabel("17h30");
+       heure11 = new JLabel("18h30");
+       heure12 = new JLabel("19h30");
      /* int j=0;
       System.out.println("entrer");
       for(int i=0;i<3;i++){
@@ -202,6 +228,20 @@ public class BigWindow {
       JPanel paneldes2 = new JPanel();
       JPanel panelentete = new JPanel();
       JPanel panelgauche = new JPanel();
+      
+      JPanel panelgauche1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche2 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche3 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche4 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche5 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche6 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche7 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche8 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche9 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche10 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche11 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      JPanel panelgauche12 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+      
       JPanel paneldroite = new JPanel();
       JPanel panelfilm = new JPanel();
       JPanel panelbot = new JPanel();
@@ -254,6 +294,20 @@ public class BigWindow {
       //panelreg.setBackground(Color.blue);
       panelentete.setBackground(Color.decode("#fecc00"));
       panelgauche.setBackground(Color.decode("#f5f2ce"));
+      
+      panelgauche1.setBackground(Color.decode("#fecc00"));
+      panelgauche2.setBackground(Color.decode("#fecc00"));
+      panelgauche3.setBackground(Color.decode("#fecc00"));
+      panelgauche4.setBackground(Color.decode("#fecc00"));
+      panelgauche5.setBackground(Color.decode("#fecc00"));
+      panelgauche6.setBackground(Color.decode("#fecc00"));
+      panelgauche7.setBackground(Color.decode("#fecc00"));
+      panelgauche8.setBackground(Color.decode("#fecc00"));
+      panelgauche9.setBackground(Color.decode("#fecc00"));
+      panelgauche10.setBackground(Color.decode("#fecc00"));
+      panelgauche11.setBackground(Color.decode("#fecc00"));
+      panelgauche12.setBackground(Color.decode("#fecc00"));
+      
       paneldroite.setBackground(Color.decode("#f5f2ce"));
       //panelfilm.setBackground(Color.magenta);
       //panelbot.setBackground(Color.red);
@@ -280,6 +334,20 @@ public class BigWindow {
       panelreg.setSize(screenWidth/8, screenHigh/7);
       panelentete.setSize(screenWidth, screenHigh/7);
       panelgauche.setSize(screenWidth/8, screenHigh-(screenHigh/7));
+      
+      panelgauche1.setSize(screenWidth/8, 850/12);
+      panelgauche2.setSize(screenWidth/8, 850/12);
+      panelgauche3.setSize(screenWidth/8, 850/12);
+      panelgauche4.setSize(screenWidth/8, 850/12);
+      panelgauche5.setSize(screenWidth/8, 850/12);
+      panelgauche6.setSize(screenWidth/8, 850/12);
+      panelgauche7.setSize(screenWidth/8, 850/12);
+      panelgauche8.setSize(screenWidth/8, 850/12);
+      panelgauche9.setSize(screenWidth/8, 850/12);
+      panelgauche10.setSize(screenWidth/8, 850/12);
+      panelgauche11.setSize(screenWidth/8, 850/12);
+      panelgauche12.setSize(screenWidth/8, 850/12);
+      
       //paneldroite.setSize(screenWidth/6, screenHigh-2*(screenHigh/5));
       panelbot.setSize(screenWidth,screenHigh/10);
       basketpanel.setSize(100,100);
@@ -290,9 +358,18 @@ public class BigWindow {
       Border blackline = BorderFactory.createLineBorder(Color.black,1);
       for(int i = 0; i<numx-1;i++)
       {
-            JLabel ptest = new JLabel();
-            ptest.setBorder(blackline);
-            panelgauche.add(ptest);
+           panelgauche1.add(heure1);
+            panelgauche2.add(heure2);
+            panelgauche3.add(heure3);
+            panelgauche4.add(heure4);
+            panelgauche5.add(heure5);
+            panelgauche6.add(heure6);
+            panelgauche7.add(heure7);
+            panelgauche8.add(heure8);
+            panelgauche9.add(heure9);
+            panelgauche10.add(heure10);
+            panelgauche11.add(heure11);
+            panelgauche12.add(heure12);
       }
       for(int i = 0; i<numx*numy;i++)
         {
@@ -333,6 +410,20 @@ public class BigWindow {
             panelfilm.setLocation(screenWidth/5, screenHigh/5);
             panelentete.setLocation(0, 0);
             panelgauche.setLocation(0, screenHigh/7);
+            
+            panelgauche1.setLocation(0, (screenHigh/7)-2);
+            panelgauche2.setLocation(0, (screenHigh/7)+(67*1)-5);
+            panelgauche3.setLocation(0, (screenHigh/7)+(67*2)-5);
+            panelgauche4.setLocation(0, (screenHigh/7)+(67*3)-5);
+            panelgauche5.setLocation(0, (screenHigh/7)+(67*4)-5);
+            panelgauche6.setLocation(0, (screenHigh/7)+(67*5)-5);
+            panelgauche7.setLocation(0, (screenHigh/7)+(67*6)-5);
+            panelgauche8.setLocation(0, (screenHigh/7)+(67*7)-5);
+            panelgauche9.setLocation(0, (screenHigh/7)+(67*8)-5);
+            panelgauche10.setLocation(0, (screenHigh/7)+(67*9)-5);
+            panelgauche11.setLocation(0, (screenHigh/7)+(67*10)-5);
+            panelgauche12.setLocation(0, (screenHigh/7)+(67*11)-5);
+            
             paneldroite.setLocation(screenWidth-(screenWidth/10), screenHigh/5);
             panelbot.setLocation(0, (screenHigh-screenHigh/10)-7);
             basketpanel.setLocation(70,70);
@@ -532,7 +623,18 @@ public class BigWindow {
      mainWindow.add(panel);
      mainWindow.add(menu);
      
-     mainWindow.add(panelgauche);  
+     mainWindow.add(panelgauche1);  
+     mainWindow.add(panelgauche2);
+     mainWindow.add(panelgauche3);  
+     mainWindow.add(panelgauche4);
+     mainWindow.add(panelgauche5);  
+     mainWindow.add(panelgauche6);
+     mainWindow.add(panelgauche7);  
+     mainWindow.add(panelgauche8);
+     mainWindow.add(panelgauche9);  
+     mainWindow.add(panelgauche10);
+     mainWindow.add(panelgauche11);  
+     mainWindow.add(panelgauche12);
      mainWindow.add(paneldroite); 
      mainWindow.add(panelbot);
      
