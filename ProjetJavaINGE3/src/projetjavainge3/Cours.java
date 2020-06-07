@@ -42,6 +42,12 @@ public class Cours implements ActionListener {
         mainWindow=m;
         
     }
+    public int getid(){
+        return this.id;
+    }
+    public String getnom(){
+        return this.nom;
+    }
     public void actionPerformed(ActionEvent e)
       {
            JPanel panelCours= new JPanel();

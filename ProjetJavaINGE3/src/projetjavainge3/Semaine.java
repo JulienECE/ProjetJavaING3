@@ -35,7 +35,7 @@ public class Semaine implements ActionListener{
        System.out.println(num_semaine);
        DAOFactory f = new DAOFactory();
        DAO<Utilisateur> user =f.getUtilisateurDAO();
-       util.setTab(user.getcours(util,Integer.parseInt(num_semaine)));
+       util.setTab(user.getcours(util,Integer.parseInt(num_semaine),0));
        new BigWindow(window,1,username,page,util);
        
     }

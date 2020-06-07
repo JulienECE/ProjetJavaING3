@@ -52,6 +52,9 @@ public class Seance {
     public String getheure_debut(){
         return this.heure_debut;
     }
+    public int getType(){
+        return this.id_type;
+    }
     
     public String getheure_fin(){
         return this.heure_fin;

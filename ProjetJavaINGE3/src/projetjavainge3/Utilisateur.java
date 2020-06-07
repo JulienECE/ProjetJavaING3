@@ -22,6 +22,7 @@ public class Utilisateur {
     private String prenom;
     private int droit;
     ArrayList<Seance> tab =null;
+    ArrayList<Cours> tab_cours =null;
     
     public Utilisateur(int id,String mail,String passwd,String nom,String prenom,int droit){
         this.id=id;
@@ -40,8 +41,14 @@ public class Utilisateur {
     public void setTab(ArrayList<Seance> tab){
         this.tab=tab;
     }
+    public void setTab_Cours(ArrayList<Cours> tab_cours){
+        this.tab_cours=tab_cours;
+    }
     public ArrayList<Seance> getab(){
         return this.tab;
+    }
+    public ArrayList<Cours> getabcours(){
+        return this.tab_cours;
     }
     
     public Utilisateur(){
@@ -84,7 +91,7 @@ public class Utilisateur {
         DAOFactory f = new DAOFactory();
         DAO<Utilisateur> e =f.getUtilisateurDAO();
         System.out.println("d");
-        this.tab=e.getcours(this,semaine);
+        this.tab=e.getcours(this,semaine,1);
         System.out.println("AH");
     } 
     

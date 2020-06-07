@@ -480,7 +480,6 @@ public class BigWindow {
       for(int i=0;i<nombre_semaine;i++){
         String a=String.valueOf(i+1);
         JButton but = new JButton(a);
-        
         but.addActionListener(new Semaine(user,username,page,mainWindow));
         but.setActionCommand(a);
         
@@ -581,6 +580,8 @@ public class BigWindow {
             }
             if(  (user.getdroit()==2)){
                 a.addActionListener(new Cours(mainWindow));
+               // a.setActionCommand(id);
+                
             }
             JPanel panelcours = new JPanel();
             System.out.println("screenWidth/8 = :" + screenWidth/8 );
